@@ -9,7 +9,7 @@ import com.study.spring1.bean.Bean2;
 import com.study.spring1.bean.Bean3;
 
 @Configuration
-//@ComponentScan({"com.study.spring1.bean"})
+@ComponentScan({"Component})
 public class ApplicationContextConfiguration {
 	@Bean
 	public Bean1 bean1() {

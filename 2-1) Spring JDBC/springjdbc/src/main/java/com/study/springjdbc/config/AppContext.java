@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Configuration
 @PropertySource("jdbc.properties")
-@Import(value = {DBConfig.class})
+@Import(value = {DBConfig2.class})
 @ComponentScan(basePackages = {"com.study.springjdbc.dao"})
 public class AppContext extends AnnotationConfigApplicationContext{
 	
