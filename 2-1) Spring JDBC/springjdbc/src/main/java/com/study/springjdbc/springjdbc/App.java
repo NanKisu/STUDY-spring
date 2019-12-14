@@ -43,6 +43,6 @@ public class App
 //    	System.out.println(dao.selectAll());
     	
     	NounService service = context.getBean(NounService.class);
-    	service.test2();
+    	service.test3();
     }
 }
