@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.sduty.springmvc.controller")
+@ComponentScan(basePackages = {"com.sduty.springmvc.controller", "com.sduty.springmvc.vo"})
 public class WebMvcConfig extends WebMvcConfigurerAdapter{
 
   @Override
