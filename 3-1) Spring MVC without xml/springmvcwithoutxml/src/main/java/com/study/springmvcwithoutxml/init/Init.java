@@ -24,7 +24,7 @@ public class Init implements WebApplicationInitializer{
     servletRegistration.addMapping("/");
     
     FilterRegistration.Dynamic filter = servletContext.addFilter("CharacterEncoding", new CharacterEncodingFilter("UTF-8", true));
-    filter.addMappingForUrlPatterns(null, true, "/");
+    filter.addMappingForUrlPatterns(null, true, "/*");
   }
   
   private ContextLoaderListener contextListener() {

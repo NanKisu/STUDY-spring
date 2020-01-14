@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="./input"><h1>To Input...</h1></a>
+	<h1>output : ${text}</h1>
+	<a href="./home"><h1>To Home...</h1></a>
 </body>
 </html>

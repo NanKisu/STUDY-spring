@@ -45,6 +45,13 @@
 			<groupId>org.apache.taglibs</groupId>
 			<artifactId>taglibs-standard-jstlel</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator-annotation-processor -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.1.0.Final</version>
+		</dependency>
 	</dependencies>
 
 	<build>
