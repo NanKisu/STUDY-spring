@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.study.webapp.valiation.dto.AlphaNumericInDto;
 import com.study.webapp.valiation.dto.AssertTrueFalseInDto;
+import com.study.webapp.valiation.dto.IsEqualInDto;
 import com.study.webapp.valiation.dto.MinMaxInDto;
 import com.study.webapp.valiation.dto.NotNullInDto;
 import com.study.webapp.valiation.dto.PastFutureInDto;
@@ -91,6 +93,36 @@ public class ApiController {
   
   @PostMapping(path = {"/asserttruefalse"})
   public Map<String, Object> assertTrueFalse(@Valid @RequestBody AssertTrueFalseInDto inDto, BindingResult bindingResult) {
+    Map<String, Object> res = new HashMap<String, Object>();
+    if(bindingResult.hasErrors()) {
+      res.put("result", bindingResult.getAllErrors());
+      res.put("response", inDto);
+    }
+    else {      
+      res.put("result", "Ok");
+      System.out.println(inDto);
+      res.put("response", inDto);
+    }
+    return res;
+  }
+  
+  @PostMapping(path = {"/alphanumeric"})
+  public Map<String, Object> AlphaNumeric(@Valid @RequestBody AlphaNumericInDto inDto, BindingResult bindingResult) {
+    Map<String, Object> res = new HashMap<String, Object>();
+    if(bindingResult.hasErrors()) {
+      res.put("result", bindingResult.getAllErrors());
+      res.put("response", inDto);
+    }
+    else {      
+      res.put("result", "Ok");
+      System.out.println(inDto);
+      res.put("response", inDto);
+    }
+    return res;
+  }
+  
+  @PostMapping(path = {"/isequal"})
+  public Map<String, Object> AlphaNumeric(@Valid @RequestBody IsEqualInDto inDto, BindingResult bindingResult) {
     Map<String, Object> res = new HashMap<String, Object>();
     if(bindingResult.hasErrors()) {
       res.put("result", bindingResult.getAllErrors());

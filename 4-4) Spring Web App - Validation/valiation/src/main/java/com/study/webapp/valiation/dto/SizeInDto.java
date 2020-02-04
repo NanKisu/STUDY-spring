@@ -6,6 +6,6 @@ import lombok.Data;
 
 @Data
 public class SizeInDto {
-  @Size(min = 3, max = 5)
+  @Size(min = 3, max = 5, message = "길이는 3이상 5이하여야 합니다.")
   private List<String> var;
 }
