@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @PropertySource(value = {"classpath:application-message.properties"})
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.study.webapp.valiation.controller"})
+@ComponentScan(basePackages = {"com.study.webapp.valiation.controller", "com.study.webapp.valiation.validator"})
 public class DispatcherServletContextConfig extends WebMvcConfigurationSupport{
   
   @Bean

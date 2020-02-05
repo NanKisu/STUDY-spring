@@ -3,7 +3,10 @@ package com.study.webapp.valiation.controller;
 import java.util.HashMap;
 import java.util.Map;
 import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,14 +15,23 @@ import com.study.webapp.valiation.dto.AlphaNumericInDto;
 import com.study.webapp.valiation.dto.AssertTrueFalseInDto;
 import com.study.webapp.valiation.dto.IsEqualInDto;
 import com.study.webapp.valiation.dto.MinMaxInDto;
+import com.study.webapp.valiation.dto.MyValidatorInDto;
 import com.study.webapp.valiation.dto.NotNullInDto;
 import com.study.webapp.valiation.dto.PastFutureInDto;
 import com.study.webapp.valiation.dto.PatternInDto;
 import com.study.webapp.valiation.dto.SizeInDto;
+import com.study.webapp.valiation.validator.MyValidator;
 
 @RestController
 @RequestMapping(path = {"/api/"})
 public class ApiController {
+  @Autowired
+  private MyValidator myValidator;
+  
+  @InitBinder
+  public void initBinder(WebDataBinder binder) {
+    binder.addValidators(myValidator);
+  }
 
   @PostMapping(path = {"/notnull"})
   public Map<String, Object> notnull(@Valid @RequestBody NotNullInDto inDto, BindingResult bindingResult) {
@@ -123,6 +135,21 @@ public class ApiController {
   
   @PostMapping(path = {"/isequal"})
   public Map<String, Object> AlphaNumeric(@Valid @RequestBody IsEqualInDto inDto, BindingResult bindingResult) {
+    Map<String, Object> res = new HashMap<String, Object>();
+    if(bindingResult.hasErrors()) {
+      res.put("result", bindingResult.getAllErrors());
+      res.put("response", inDto);
+    }
+    else {      
+      res.put("result", "Ok");
+      System.out.println(inDto);
+      res.put("response", inDto);
+    }
+    return res;
+  }
+  
+  @PostMapping(path = {"/myvalidator"})
+  public Map<String, Object> myValidator(@Valid @RequestBody MyValidatorInDto inDto, BindingResult bindingResult) {
     Map<String, Object> res = new HashMap<String, Object>();
     if(bindingResult.hasErrors()) {
       res.put("result", bindingResult.getAllErrors());
