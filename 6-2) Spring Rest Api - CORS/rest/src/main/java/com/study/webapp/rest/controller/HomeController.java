@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.study.webapp.rest.dto.BookInfo;
 
-@CrossOrigin(origins = {})
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping(path = {"/"})
 public class HomeController {

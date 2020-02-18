@@ -40,7 +40,7 @@ public class BookInfoDao {
 	public List<BookInfo> readBookInfoByCondition(SearchBookInfoCondition condition) {
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(condition);
 		return jdbcTemplate.query(
-				"SELECT * FROM BookInfo WHERE (:bookId is null OR bookId = :bookId) AND (:name is null OR name = :name) AND (:publishedData is null OR publishedData = :publishedData)",
+				"SELECT * FROM BookInfo WHERE (:bookId is null OR bookId = :bookId) AND (:name is null OR name = :name) AND (:publishedDate is null OR publishedDate = :publishedDate)",
 				params, BeanPropertyRowMapper.newInstance(BookInfo.class));
 	}
 
