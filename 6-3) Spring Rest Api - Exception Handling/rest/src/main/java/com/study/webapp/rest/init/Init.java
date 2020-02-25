@@ -38,6 +38,7 @@ public class Init implements WebApplicationInitializer {
     AnnotationConfigWebApplicationContext dispatcherServletContext = new AnnotationConfigWebApplicationContext();
     dispatcherServletContext.register(DispatcherServletConfig.class);
     DispatcherServlet dispatcherServlet = new DispatcherServlet(dispatcherServletContext);
+    dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
     ServletRegistration.Dynamic restServlet = servletContext.addServlet("restServlet", dispatcherServlet);
     restServlet.setLoadOnStartup(1);
     restServlet.addMapping("/");

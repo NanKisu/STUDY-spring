@@ -2,6 +2,7 @@ package com.study.webapp.rest.controller;
 
 import java.net.URI;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
@@ -53,7 +54,7 @@ public class BookInfoController {
 //  }
   
   @PostMapping
-  public ResponseEntity<Void> createBookInfo(@RequestBody BookInfo bookInfo, UriComponentsBuilder uriBuilder) {
+  public ResponseEntity<Void> createBookInfo(@RequestBody @Valid BookInfo bookInfo, UriComponentsBuilder uriBuilder) {
     Integer bookId = bookInfoDao.createBookInfo(bookInfo);
     URI resourceUri = MvcUriComponentsBuilder.relativeTo(uriBuilder).withMethodCall(MvcUriComponentsBuilder.on(BookInfoController.class).getBookInfo(bookId)).build().encode().toUri();
     return ResponseEntity.created(resourceUri).build();
