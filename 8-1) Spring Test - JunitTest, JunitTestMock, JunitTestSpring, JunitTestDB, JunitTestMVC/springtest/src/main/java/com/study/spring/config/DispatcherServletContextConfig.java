@@ -12,10 +12,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan(basePackages = {"com.study.spring"})
 public class DispatcherServletContextConfig{
-//  @Bean
-//  public InternalResourceViewResolver internalResourceViewResolver() {
-//    return new InternalResourceViewResolver("/", ".jsp");
-//  }
+  @Bean
+  public InternalResourceViewResolver internalResourceViewResolver() {
+    return new InternalResourceViewResolver("/", ".jsp");
+  }
   
   @Bean
   public MessageSource messageSource() {
