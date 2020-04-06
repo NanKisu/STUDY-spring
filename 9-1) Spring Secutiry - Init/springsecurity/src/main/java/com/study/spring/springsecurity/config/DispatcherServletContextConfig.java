@@ -1,18 +1,13 @@
 package com.study.spring.springsecurity.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.context.annotation.Import;
 
 @Configuration
-@EnableWebMvc
+
 @ComponentScan(basePackages = {"com.study.spring.springsecurity"})
-public class DispatcherServletContextConfig extends WebMvcConfigurerAdapter{
-  @Bean
-  public InternalResourceViewResolver internalResourceViewResolver() {
-    return new InternalResourceViewResolver("/", ".jsp");
-  }
+@Import(value = {WebMvcConfig.class})
+public class DispatcherServletContextConfig{
+
 }
