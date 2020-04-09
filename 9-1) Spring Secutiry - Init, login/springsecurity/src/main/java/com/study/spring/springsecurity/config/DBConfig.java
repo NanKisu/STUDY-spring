@@ -19,6 +19,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class DBConfig{
   @Bean
   public DataSource dataSource() {
-    return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).addScript("user.sql").build();
+    return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).addScript("myuser.sql").build();
   }
 }

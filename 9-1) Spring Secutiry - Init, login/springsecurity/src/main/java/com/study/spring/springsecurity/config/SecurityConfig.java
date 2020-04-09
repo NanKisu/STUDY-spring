@@ -1,16 +1,35 @@
 
 package com.study.spring.springsecurity.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import com.study.spring.springsecurity.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
+  @Autowired
+  private UserService userService;
+  
+  @Autowired
+  private void configureAuthenticationManeger(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(userService);
+  }
+  
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
+  
   @Override
   public void configure(WebSecurity web) throws Exception {
     // TODO Auto-generated method stub
@@ -20,10 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     // TODO Auto-generated method stub
-    http.formLogin().loginPage("/login").loginProcessingUrl("/authenticate").usernameParameter("uid").passwordParameter("pwd").permitAll();
-    http.formLogin().defaultSuccessUrl("/").permitAll();
-    http.formLogin().failureForwardUrl("/loginfailure").permitAll();
+    http.formLogin().loginPage("/login").loginProcessingUrl("/authenticate").usernameParameter("username").passwordParameter("password").permitAll();
     http.authorizeRequests().anyRequest().authenticated();
   }
+  
+  
   
 }
